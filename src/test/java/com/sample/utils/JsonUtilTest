@@ -1,0 +1,23 @@
+package com.sample.utils;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.IOException;
+
+import org.junit.jupiter.api.Test;
+
+import com.sample.demo.model.Member;
+
+public class JsonUtilTest {
+
+    private static final String RESPONSE_PATH = "src/test/resources/json/";
+
+    @Test
+    public void convertFileToObject() throws IOException {
+        final Member member = JsonUtil.jsonFileToObject(RESPONSE_PATH + "member.json", Member.class);
+
+        assertThat(member.getAge()).isEqualTo("10");
+        assertThat(member.getName()).isEqualTo("Kim");
+    }
+
+}
